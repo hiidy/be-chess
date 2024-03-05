@@ -8,7 +8,7 @@ public class Board {
 
     private static final int MAXIMUM_PAWN_NUMBER = 8;
 
-    private List<Pawn> pieces = new ArrayList<>();
+    private final List<Pawn> pieces = new ArrayList<>();
 
     public void addPawn(Pawn pawn) {
         checkPawnCount();
