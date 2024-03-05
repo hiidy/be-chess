@@ -1,9 +1,11 @@
+package chess.pieces;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
-import Piece.Pawn;
-import Piece.Pawn.Color;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pieces.Pawn;
+import pieces.Pawn.Color;
 
 
 class PawnTest {

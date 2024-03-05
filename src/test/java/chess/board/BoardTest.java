@@ -1,11 +1,13 @@
+package chess.board;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import Board.Board;
-import Piece.Pawn;
-import Piece.Pawn.Color;
+import board.Board;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pieces.Pawn;
+import pieces.Pawn.Color;
 
 class BoardTest {
 
