@@ -11,7 +11,7 @@ import pieces.Pawn.Color;
 class PawnTest {
 
     @Test
-    @DisplayName("pawn 생성 테스트")
+    @DisplayName("흰색과 검은색을 할당해서 Pawn 생성기능 테스트")
     void createPawn() {
 
         verifyPawn(Color.WHITE);
@@ -24,7 +24,7 @@ class PawnTest {
     }
 
     @Test
-    @DisplayName("pawn 기본 생성자 테스트")
+    @DisplayName("pawn 기본 생성자가 흰색 폰으로 생성되는지 테스트")
     void createDefaultConstructor() {
         Pawn pawn = new Pawn();
         assertThat(pawn.getColor()).isEqualTo(Color.WHITE);
