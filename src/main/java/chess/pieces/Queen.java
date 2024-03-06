@@ -1,22 +1,20 @@
 package chess.pieces;
 
-public class Pawn extends Piece {
+public class Queen extends Piece {
 
-    public Pawn(Color color) {
+    public Queen(Color color) {
         super(getSymbolForColor(color), color);
     }
 
-    public Pawn() {
+    public Queen() {
         super(getSymbolForColor(Color.WHITE), Color.WHITE);
     }
 
     private static String getSymbolForColor(Color color) {
         if (color == Color.WHITE) {
-            return "♟";
+            return "♛";
         } else {
-            return "♙";
+            return "♕";
         }
     }
-
-
 }
