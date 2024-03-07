@@ -2,10 +2,12 @@ package chess.pieces;
 
 public abstract class Piece {
 
+    private final PieceType type;
     private final String symbol;
     private final Color color;
 
-    protected Piece(String symbol, Color color) {
+    protected Piece(PieceType type, String symbol, Color color) {
+        this.type = type;
         this.symbol = symbol;
         this.color = color;
     }
@@ -24,5 +26,9 @@ public abstract class Piece {
 
     public boolean isBlack() {
         return color == Color.BLACK;
+    }
+
+    public boolean isNone() {
+        return color == Color.NOCOLOR;
     }
 }
