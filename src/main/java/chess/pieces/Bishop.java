@@ -2,8 +2,8 @@ package chess.pieces;
 
 public class Bishop extends Piece {
 
-    public Bishop(Color color) {
-        super(getSymbolForColor(color), color);
+    public Bishop(PieceType type, Color color) {
+        super(type, getSymbolForColor(color), color);
     }
 
 
