@@ -6,9 +6,6 @@ public class Pawn extends Piece {
         super(getSymbolForColor(color), color);
     }
 
-    public Pawn() {
-        super(getSymbolForColor(Color.WHITE), Color.WHITE);
-    }
 
     private static String getSymbolForColor(Color color) {
         if (color == Color.WHITE) {
