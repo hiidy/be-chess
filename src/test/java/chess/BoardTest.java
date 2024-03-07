@@ -1,10 +1,7 @@
 package chess;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import chess.pieces.Pawn;
-import chess.pieces.Pawn.Color;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,47 +15,33 @@ class BoardTest {
         board = new Board();
     }
 
-
     @Test
-    @DisplayName("폰을 추가하고 판의 사이즈를 확인")
-    void addPawnAndCheckSize() {
-        Pawn white = new Pawn(Color.WHITE);
-        board.addPawn(white);
-        assertEquals(1, board.getPiecesNumber());
+    @DisplayName("체스판을 초기화했을 때 기물의 개수가 총 32개인지 테스트")
+    void testInitializePawn() {
+        board.initializeChessBoard();
+        assertEquals(32, board.getPiecesNumber());
     }
 
     @Test
-    @DisplayName("폰을 추가하고 찾는 기능 테스트")
-    void addPawnAndFind() {
-        Pawn white = new Pawn(Color.WHITE);
-        board.addPawn(white);
-        assertEquals(white, board.findPawn(0));
-    }
-
-
-    @Test
-    @DisplayName("최대 폰 개수 초과 테스트")
-    void exceedMaximumPawnNumber() {
-        for (int i = 0; i < 16; i++) {
-            board.addPawn(new Pawn());
-        }
-        assertEquals(16, board.getPiecesNumber());
-        assertEquals("최대 폰 개수를 초과하였습니다.", assertThrows(IllegalStateException.class,
-            () -> board.addPawn(new Pawn())).getMessage());
+    @DisplayName("초기화 된 체스판에서 좌표에 따라서 흰색 Pawn을 찾는 테스트")
+    void testFindPieceByPosition() {
+        board.initializeChessBoard();
+        assertEquals("♟", board.findPiece(new Position(2, 1)).getSymbol());
     }
 
     @Test
     @DisplayName("전체 체스판이 제대로 출력되는지 테스트")
     void testPrintChessBoard() {
-        board.initialize();
-        assertEquals("........\n"
-            + "PPPPPPPP\n"
-            + "........\n"
-            + "........\n"
-            + "........\n"
-            + "........\n"
-            + "pppppppp\n"
-            + "........\n", board.getChessBoardResult());
+        board.initializeChessBoard();
+        assertEquals(
+            "♜♞♝♛♚♝♞♜\n" +
+                "♟♟♟♟♟♟♟♟\n" +
+                "........\n" +
+                "........\n" +
+                "........\n" +
+                "........\n" +
+                "♙♙♙♙♙♙♙♙\n" +
+                "♖♘♗♕♔♗♘♖\n", board.getChessBoardResult()
+        );
     }
-
 }

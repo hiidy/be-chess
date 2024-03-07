@@ -13,7 +13,7 @@ public class ChessGame {
     private static void playChessGame() {
         System.out.println(INPUT_COMMAND_MESSAGE);
         Board board = new Board();
-        board.initialize();
+        board.initializeChessBoard();
 
         String inputCommand;
 
