@@ -12,6 +12,10 @@ public class Position {
         this.column = column;
     }
 
+    public Column getColumn() {
+        return column;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
