@@ -17,4 +17,12 @@ public abstract class Piece {
     public Color getColor() {
         return color;
     }
+
+    public boolean isWhite() {
+        return color == Color.WHITE;
+    }
+
+    public boolean isBlack() {
+        return color == Color.BLACK;
+    }
 }
