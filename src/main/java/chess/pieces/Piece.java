@@ -16,10 +16,6 @@ public abstract class Piece {
         return symbol;
     }
 
-    public Color getColor() {
-        return color;
-    }
-
     public boolean isWhite() {
         return color == Color.WHITE;
     }
@@ -30,5 +26,13 @@ public abstract class Piece {
 
     public boolean isNone() {
         return color == Color.NOCOLOR;
+    }
+
+    public boolean isSameType(PieceType type) {
+        return this.type == type;
+    }
+
+    public boolean isSameColor(Color color) {
+        return this.color == color;
     }
 }

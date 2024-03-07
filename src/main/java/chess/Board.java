@@ -91,8 +91,11 @@ public class Board {
         }
     }
 
-    public int getPiecesNumber() {
-        return piecePositions.size();
+    public int getPiecesNumber(PieceType pieceType, Color color) {
+        return piecePositions.values().stream()
+            .filter(piece -> piece.isSameType(pieceType) && piece.isSameColor(color))
+            .mapToInt(piece -> 1)
+            .sum();
     }
 
     public Piece findPiece(Position position) {
