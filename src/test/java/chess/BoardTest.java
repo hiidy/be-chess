@@ -35,7 +35,7 @@ class BoardTest {
     @Test
     @DisplayName("초기화 된 체스판에서 좌표에 따라서 흰색 Pawn을 찾는 테스트")
     void testFindPieceByPosition() {
-        assertEquals("♟", board.findPiece(new Position(2, 1)).getSymbol());
+        assertEquals("♟", board.findPiece(new Position(Rank.SECOND, Column.A)).getSymbol());
     }
 
     @Test

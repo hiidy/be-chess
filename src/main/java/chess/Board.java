@@ -4,92 +4,62 @@ import chess.pieces.Color;
 import chess.pieces.Piece;
 import chess.pieces.PieceFactory;
 import chess.pieces.PieceType;
+import chess.utils.StringUtils;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
 
-    private static final int CHESS_BOARD_SIZE = 8;
-
     private final Map<Position, Piece> piecePositions = new HashMap<>();
 
     public void initializeChessBoard() {
         initializePawn();
-        initializeKnight();
-        initializeBishop();
-        initializeRook();
-        initializeQueen();
-        initializeKing();
+        initializePieceWithoutPawn(Rank.FIRST, Color.WHITE);
+        initializePieceWithoutPawn(Rank.EIGHTH, Color.BLACK);
         initializeNonePiece();
     }
 
-    private void initializePanw() []
-
-
     private void initializePawn() {
-        for (int i = 1; i <= 8; i++) {
-            piecePositions.put(new Position(2, i),
+        for (Column column : Column.values()) {
+            piecePositions.put(new Position(Rank.SECOND, column),
                 PieceFactory.createPiece(PieceType.PAWN, Color.WHITE));
         }
-        for (int i = 1; i <= 8; i++) {
-            piecePositions.put(new Position(7, i),
+
+        for (Column column : Column.values()) {
+            piecePositions.put(new Position(Rank.SEVENTH, column),
                 PieceFactory.createPiece(PieceType.PAWN, Color.BLACK));
         }
     }
 
-    private void initializeKnight() {
-        piecePositions.put(new Position(1, 2),
-            PieceFactory.createPiece(PieceType.KNIGHT, Color.WHITE));
-        piecePositions.put(new Position(1, 7),
-            PieceFactory.createPiece(PieceType.KNIGHT, Color.WHITE));
-        piecePositions.put(new Position(8, 2),
-            PieceFactory.createPiece(PieceType.KNIGHT, Color.BLACK));
-        piecePositions.put(new Position(8, 7),
-            PieceFactory.createPiece(PieceType.KNIGHT, Color.BLACK));
-    }
-
-    private void initializeBishop() {
-        piecePositions.put(new Position(1, 3),
-            PieceFactory.createPiece(PieceType.BISHOP, Color.WHITE));
-        piecePositions.put(new Position(1, 6),
-            PieceFactory.createPiece(PieceType.BISHOP, Color.WHITE));
-        piecePositions.put(new Position(8, 3),
-            PieceFactory.createPiece(PieceType.BISHOP, Color.BLACK));
-        piecePositions.put(new Position(8, 6),
-            PieceFactory.createPiece(PieceType.BISHOP, Color.BLACK));
-    }
-
-    private void initializeRook() {
-        piecePositions.put(new Position(1, 1),
-            PieceFactory.createPiece(PieceType.ROOK, Color.WHITE));
-        piecePositions.put(new Position(1, 8),
-            PieceFactory.createPiece(PieceType.ROOK, Color.WHITE));
-        piecePositions.put(new Position(8, 1),
-            PieceFactory.createPiece(PieceType.ROOK, Color.BLACK));
-        piecePositions.put(new Position(8, 8),
-            PieceFactory.createPiece(PieceType.ROOK, Color.BLACK));
-    }
-
-    private void initializeQueen() {
-        piecePositions.put(new Position(1, 4),
-            PieceFactory.createPiece(PieceType.QUEEN, Color.WHITE));
-        piecePositions.put(new Position(8, 4),
-            PieceFactory.createPiece(PieceType.QUEEN, Color.BLACK));
-    }
-
-    private void initializeKing() {
-        piecePositions.put(new Position(1, 5),
-            PieceFactory.createPiece(PieceType.KING, Color.WHITE));
-        piecePositions.put(new Position(8, 5),
-            PieceFactory.createPiece(PieceType.KING, Color.BLACK));
+    private void initializePieceWithoutPawn(Rank rank, Color color) {
+        piecePositions.put(new Position(rank, Column.A),
+            PieceFactory.createPiece(PieceType.ROOK, color));
+        piecePositions.put(new Position(rank, Column.B),
+            PieceFactory.createPiece(PieceType.KNIGHT, color));
+        piecePositions.put(new Position(rank, Column.C),
+            PieceFactory.createPiece(PieceType.BISHOP, color));
+        piecePositions.put(new Position(rank, Column.D),
+            PieceFactory.createPiece(PieceType.QUEEN, color));
+        piecePositions.put(new Position(rank, Column.E),
+            PieceFactory.createPiece(PieceType.KING, color));
+        piecePositions.put(new Position(rank, Column.F),
+            PieceFactory.createPiece(PieceType.BISHOP, color));
+        piecePositions.put(new Position(rank, Column.G),
+            PieceFactory.createPiece(PieceType.KNIGHT, color));
+        piecePositions.put(new Position(rank, Column.H),
+            PieceFactory.createPiece(PieceType.ROOK, color));
     }
 
     private void initializeNonePiece() {
-        for (int i = 3; i <= 6; i++) {
-            for (int j = 1; j <= CHESS_BOARD_SIZE; j++) {
-                piecePositions.put(new Position(i, j),
-                    PieceFactory.createPiece(PieceType.NONE, Color.NOCOLOR));
-            }
+        for (Column colum : Column.values()) {
+            piecePositions.put(new Position(Rank.THIRD, colum),
+                PieceFactory.createPiece(PieceType.NONE, Color.NOCOLOR));
+            piecePositions.put(new Position(Rank.FOURTH, colum),
+                PieceFactory.createPiece(PieceType.NONE, Color.NOCOLOR));
+            piecePositions.put(new Position(Rank.FIFTH, colum),
+                PieceFactory.createPiece(PieceType.NONE, Color.NOCOLOR));
+            piecePositions.put(new Position(Rank.SIXTH, colum),
+                PieceFactory.createPiece(PieceType.NONE, Color.NOCOLOR));
         }
     }
 
@@ -106,26 +76,22 @@ public class Board {
 
     public String getChessBoardResult() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= CHESS_BOARD_SIZE; i++) {
-            sb.append(getRowResult(i));
+        for (Rank rank : Rank.values()) {
+            sb.append(getRowResult(rank));
         }
         return sb.toString();
     }
 
-    private String getRowResult(int row) {
+    private String getRowResult(Rank rank) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= CHESS_BOARD_SIZE; i++) {
-            sb.append(getPieceSymbol(row, i));
+        for (Column column : Column.values()) {
+            sb.append(getPieceSymbol(rank, column));
         }
-        sb.append('\n');
-        return sb.toString();
+        return StringUtils.appendNewLine(sb.toString());
     }
 
-    private String getPieceSymbol(int row, int col) {
-        if (!piecePositions.containsKey(new Position(row, col))) {
-            return ".";
-        }
-        return piecePositions.get(new Position(row, col)).getSymbol();
+    private String getPieceSymbol(Rank rank, Column column) {
+        return findPiece(new Position(rank, column)).getSymbol();
     }
 
 }
