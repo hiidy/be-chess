@@ -4,21 +4,14 @@ import java.util.Objects;
 
 public class Position {
 
-    private int x;
-    private int y;
+    private final Rank rank;
+    private final Column column;
 
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Position(Rank rank, Column column) {
+        this.rank = rank;
+        this.column = column;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
 
     @Override
     public boolean equals(Object obj) {
@@ -29,11 +22,11 @@ public class Position {
             return false;
         }
         Position other = (Position) obj;
-        return this.x == other.x && this.y == other.y;
+        return this.rank == other.rank && this.column == other.column;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(rank, column);
     }
 }

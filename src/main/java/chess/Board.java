@@ -23,6 +23,8 @@ public class Board {
         initializeNonePiece();
     }
 
+    private void initializePanw() []
+
 
     private void initializePawn() {
         for (int i = 1; i <= 8; i++) {
