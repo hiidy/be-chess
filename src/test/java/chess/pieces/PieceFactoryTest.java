@@ -25,7 +25,7 @@ class PieceFactoryTest {
     @DisplayName("팩토리 메서드로 pawn을 생성했을 때 흰색이 잘 할당되었는지 확인하는 테스트")
     void testAssignColorByPieceFactory() {
         Piece pawn = PieceFactory.createPiece(PieceType.PAWN, Color.WHITE);
-        assertThat(pawn.getColor()).isEqualTo(Color.WHITE);
+        assertThat(pawn.isWhite()).isTrue();
     }
 
 }
