@@ -6,9 +6,6 @@ public class Rook extends Piece {
         super(getSymbolForColor(color), color);
     }
 
-    public Rook() {
-        super(getSymbolForColor(Color.WHITE), Color.WHITE);
-    }
 
     private static String getSymbolForColor(Color color) {
         if (color == Color.WHITE) {

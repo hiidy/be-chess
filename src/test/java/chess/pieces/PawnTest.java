@@ -20,12 +20,6 @@ class PawnTest {
         assertThat(pawn.getColor()).isEqualTo(color);
     }
 
-    @Test
-    @DisplayName("pawn 기본 생성자가 흰색 폰으로 생성되는지 테스트")
-    void createDefaultConstructor() {
-        Piece pawn = new Pawn();
-        assertThat(pawn.getColor()).isEqualTo(Color.WHITE);
-    }
 
     @Test
     @DisplayName("흰색 Pawn일 때 ♟기호가 할당되는지 테스트합니다.")

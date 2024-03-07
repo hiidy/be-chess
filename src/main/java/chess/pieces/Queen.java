@@ -6,10 +6,6 @@ public class Queen extends Piece {
         super(getSymbolForColor(color), color);
     }
 
-    public Queen() {
-        super(getSymbolForColor(Color.WHITE), Color.WHITE);
-    }
-
     private static String getSymbolForColor(Color color) {
         if (color == Color.WHITE) {
             return "♛";
