@@ -20,12 +20,6 @@ class BoardTest {
         board.initializeChessBoard();
     }
 
-//    @Test
-//    @DisplayName("체스판을 초기화했을 때 기물의 개수가 총 32개인지 테스트")
-//    void testInitializePawn() {
-//        board.initializeChessBoard();
-//
-//    }
 
     @Test
     @DisplayName("PAWN과 WHITE 타입을 입력했을 때 기물이 총 몇개인지 찾는 테스트")
@@ -72,4 +66,19 @@ class BoardTest {
         assertEquals(pieceBeforeMove, pieceAfterMove);
     }
 
+    @Test
+    @DisplayName("초기 체스판이 만들어질때 점수가 38점인지 확인하는 테스트")
+    void testCalculateWhitePlayerScore() {
+        assertEquals(38.0, board.calculateScoreByColor(Color.WHITE));
+    }
+
+    @Test
+    @DisplayName("Pawn이 같은 열에 있을 때 0.5의 점수를 잘 갖는지 테스트")
+    void testCheckTwoMorePawnInColumn() {
+        board.move(new Position(Rank.SECOND, Column.B), new Position(Rank.THIRD, Column.C));
+        assertEquals(37.0, board.calculateScoreByColor(Color.WHITE));
+
+        board.move(new Position(Rank.SECOND, Column.A), new Position(Rank.FOURTH, Column.C));
+        assertEquals(36.5, board.calculateScoreByColor(Color.WHITE));
+    }
 }

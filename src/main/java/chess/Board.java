@@ -101,4 +101,36 @@ public class Board {
         return findPiece(new Position(rank, column)).getSymbol();
     }
 
+    public double calculateScoreByColor(Color color) {
+        double scoreResult = 0;
+        for (PieceType pieceType : PieceType.values()) {
+            double piecesSum = getPiecesNumber(pieceType, color);
+            if (pieceType == PieceType.PAWN) {
+                piecesSum -= checkTwoMorePawnInColumn(color) * 0.5;
+            }
+            scoreResult += piecesSum * pieceType.getDefaultPoint();
+        }
+        return scoreResult;
+    }
+
+    public int checkTwoMorePawnInColumn(Color color) {
+        Map<Column, Integer> pawnCount = new HashMap<>();
+
+        for (Position position : piecePositions.keySet()) {
+            Piece piece = piecePositions.get(position);
+            if (piece.isSameType(PieceType.PAWN) && piece.isSameColor(color)) {
+                pawnCount.merge(position.getColumn(), 1, Integer::sum);
+            }
+        }
+        int duplicatePawnsCount = 0;
+
+        for (int count : pawnCount.values()) {
+            if (count > 1) {
+                duplicatePawnsCount += count;
+            }
+        }
+
+        return duplicatePawnsCount;
+    }
+
 }
