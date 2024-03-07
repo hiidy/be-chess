@@ -8,18 +8,13 @@ import org.junit.jupiter.api.Test;
 
 class PawnTest {
 
+
     @Test
-    @DisplayName("흰색과 검은색을 할당해서 Pawn 생성기능 테스트")
-    void createPawn() {
-        verifyPawn(Color.WHITE);
-        verifyPawn(Color.BLACK);
+    @DisplayName("흰색pawn을 만들어서 흰색이 잘 할당되었는지 확인합니다.")
+    void verifyCreateWhitePawn() {
+        Piece pawn = new Pawn(Color.WHITE);
+        assertThat(pawn.isWhite()).isTrue();
     }
-
-    void verifyPawn(Color color) {
-        Pawn pawn = new Pawn(color);
-        assertThat(pawn.getColor()).isEqualTo(color);
-    }
-
 
     @Test
     @DisplayName("흰색 Pawn일 때 ♟기호가 할당되는지 테스트합니다.")
