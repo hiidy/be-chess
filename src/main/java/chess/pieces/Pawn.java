@@ -2,8 +2,8 @@ package chess.pieces;
 
 public class Pawn extends Piece {
 
-    public Pawn(Color color) {
-        super(getSymbolForColor(color), color);
+    public Pawn(PieceType type, Color color) {
+        super(type, getSymbolForColor(color), color);
     }
 
 

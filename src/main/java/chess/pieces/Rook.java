@@ -2,8 +2,8 @@ package chess.pieces;
 
 public class Rook extends Piece {
 
-    public Rook(Color color) {
-        super(getSymbolForColor(color), color);
+    public Rook(PieceType type, Color color) {
+        super(type, getSymbolForColor(color), color);
     }
 
 

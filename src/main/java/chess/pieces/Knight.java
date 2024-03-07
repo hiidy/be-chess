@@ -2,8 +2,8 @@ package chess.pieces;
 
 public class Knight extends Piece {
 
-    public Knight(Color color) {
-        super(getSymbolForColor(color), color);
+    public Knight(PieceType type, Color color) {
+        super(type, getSymbolForColor(color), color);
     }
 
 
