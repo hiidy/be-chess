@@ -12,6 +12,13 @@ public class Board {
 
     private final Map<Position, Piece> piecePositions = new HashMap<>();
 
+    public void move(Position fromPosition, Position toPosition) {
+        Piece fromPiece = piecePositions.get(fromPosition);
+        Piece toPiece = piecePositions.get(toPosition);
+        piecePositions.replace(toPosition, fromPiece);
+        piecePositions.replace(fromPosition, toPiece);
+    }
+
     public void initializeChessBoard() {
         initializePawn();
         initializePieceWithoutPawn(Rank.FIRST, Color.WHITE);

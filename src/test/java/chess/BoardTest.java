@@ -1,8 +1,10 @@
 package chess;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import chess.pieces.Color;
+import chess.pieces.Piece;
 import chess.pieces.PieceType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -52,4 +54,22 @@ class BoardTest {
                 "♖♘♗♕♔♗♘♖\n", board.getChessBoardResult()
         );
     }
+
+    @Test
+    @DisplayName("기물을 움직이는 메서드 테스트")
+    void testMovePiece() {
+        board.move(new Position(Rank.SECOND, Column.A), new Position(Rank.FOURTH, Column.A));
+        assertEquals("♟", board.findPiece(new Position(Rank.FOURTH, Column.A)).getSymbol());
+    }
+
+    @Test
+    @DisplayName("기물들을 바꿀 때 객체가 동등한지 테스트")
+    void testMovePieceByReplace() {
+        Piece pieceBeforeMove = board.findPiece(new Position(Rank.SECOND, Column.A));
+        board.move(new Position(Rank.SECOND, Column.A), new Position(Rank.FOURTH, Column.A));
+        Piece pieceAfterMove = board.findPiece(new Position(Rank.FOURTH, Column.A));
+        assertSame(pieceBeforeMove, pieceAfterMove);
+        assertEquals(pieceBeforeMove, pieceAfterMove);
+    }
+
 }
