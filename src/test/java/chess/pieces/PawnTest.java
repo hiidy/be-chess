@@ -12,21 +12,21 @@ class PawnTest {
     @Test
     @DisplayName("흰색pawn을 만들어서 흰색이 잘 할당되었는지 확인합니다.")
     void verifyCreateWhitePawn() {
-        Piece pawn = new Pawn(Color.WHITE);
+        Piece pawn = new Pawn(PieceType.PAWN, Color.WHITE);
         assertThat(pawn.isWhite()).isTrue();
     }
 
     @Test
     @DisplayName("흰색 Pawn일 때 ♟기호가 할당되는지 테스트합니다.")
     void verifyWhitePawnSymbol() {
-        Piece whitePawn = new Pawn(Color.WHITE);
+        Piece whitePawn = new Pawn(PieceType.PAWN, Color.WHITE);
         assertThat(whitePawn.getSymbol()).isEqualTo("♟");
     }
 
     @Test
     @DisplayName("검은색 Pawn일 때 ♙기호가 할당되는지 테스트합니다.")
     void verifyBlackPawnSymbol() {
-        Piece blackPawn = new Pawn(Color.BLACK);
+        Piece blackPawn = new Pawn(PieceType.PAWN, Color.BLACK);
         assertThat(blackPawn.getSymbol()).isEqualTo("♙");
     }
 }
